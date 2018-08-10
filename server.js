@@ -18,10 +18,6 @@ app.get('/login', function(req, res) {
     }))
 })
 
-app.get('/logout', function(req, res) {
-  req.session.destroy();
-})
-
 app.get('/callback', function(req, res) {
   let code = req.query.code || null
   let authOptions = {
