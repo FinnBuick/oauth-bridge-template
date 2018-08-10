@@ -4,8 +4,8 @@ let querystring = require('querystring')
 
 let app = express()
 
-let redirect_uri = 
-  process.env.REDIRECT_URI || 
+let redirect_uri =
+  process.env.REDIRECT_URI ||
   'http://localhost:8888/callback'
 
 app.get('/login', function(req, res) {
@@ -16,6 +16,10 @@ app.get('/login', function(req, res) {
       scope: 'user-read-private user-read-email',
       redirect_uri
     }))
+})
+
+app.get('logout', function(req, res) {
+  req.session.destroy();
 })
 
 app.get('/callback', function(req, res) {
